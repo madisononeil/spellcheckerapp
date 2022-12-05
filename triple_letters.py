@@ -1,9 +1,9 @@
-class TripleLettersinWord:
+from spelling_mistake import SpellingMistake as Sp
 
+class TripleLettersinWord(Sp):
+ 
     def __init__(self, word):
-        if type(word) is not str:
-            raise ValueError('Must enter a string value')
-        self.word = word
+        super().__init__(word)
 
     def get_tripleletters(self):
 

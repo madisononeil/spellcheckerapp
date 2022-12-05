@@ -1,9 +1,9 @@
-class DoubleLettersinWord:
+from spelling_mistake import SpellingMistake as Sp
+
+class DoubleLettersinWord(Sp):
     
     def __init__(self, word):
-        if type(word) is not str:
-            raise ValueError('Must enter a string value')
-        self.word = word
+        super().__init__(word)
 
     def get_doubleletters(self):
         double_letters= set()

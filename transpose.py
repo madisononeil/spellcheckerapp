@@ -1,8 +1,9 @@
-class TransposeOfWord:
+from spelling_mistake import SpellingMistake as Sp
+
+class TransposeOfWord(Sp):
 
     def __init__(self, word):
-            self.word = word
-
+        super().__init__(word)
 
     def get_transposes(self):
         transposes = set()
