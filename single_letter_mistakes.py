@@ -14,5 +14,9 @@ class SingleLetterMistakeofWord(Sp):
                 new_word = self.word.replace(char, char + chr(i))
                 single_letter_mistake.add(new_word)
 
+        for char in self.word:
+            word_new = self.word.replace(char, '')
+            single_letter_mistake.add(word_new)
+
         return single_letter_mistake
 
