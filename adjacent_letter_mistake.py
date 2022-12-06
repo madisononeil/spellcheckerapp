@@ -1,14 +1,33 @@
 from spelling_mistake import SpellingMistake as Sp
 
 class AdjacentLetterMistake(Sp):
+    """inheritance class of SpellingMistake class that replaces the letters 
+        in the word with letters adjacent to it on the keyboard
+
+    Args:
+        Sp (str): word
+    """
 
     def __init__(self, word):
+        """creates word variable
+
+        Args:
+            word (str): misspelled word
+        """
         super().__init__(word)
 
     def get_adjacent_letter_mistake(self):
+        """replaces the letters in the word with letters 
+            adjacent to it on the keyboard
 
+        Returns:
+            returns sets of all word possibilities
+        """
+
+        #creates empty set to put new words in
         adjacent_letter_mistake = set()
 
+        #groups of adjacent keyboard keys
         group_1= 'qazwsx'
         group_2= 'saxdw'
         group_3= 'descf'
@@ -18,6 +37,8 @@ class AdjacentLetterMistake(Sp):
         group_7= 'mlkioj'
         group_8= 'pilok'
 
+        #if the letter is in the word and the letter is in the group, 
+        #it will replace letter with adjacent keyboard letters
         for char in self.word:
             for letter in group_1:
                 if char == letter:
