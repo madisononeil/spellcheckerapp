@@ -23,9 +23,12 @@ while edit_more_files:
     searching_file.get_correct_spellings()
     print(searching_file.__str__())
 
+    
     #if the file is empty, ask for another file
     if not searching_file.get_misspelled_words():
         continue_program = input('\nWould you like to correct another file(Y/N)?: ')
+        if continue_program != 'Y' or continue_program != 'N':
+                raise ValueError('Please enter a valid answer (Y/N)')
     
     else:
         continue_edit_text = input('\nWould you like to replace a word(Y/N)?: ')
@@ -33,6 +36,9 @@ while edit_more_files:
         #create loop so user can change multiple words within the file
         edit_text = True
         while edit_text:
+
+            if continue_edit_text != 'Y' or continue_edit_text != 'N':
+                raise ValueError('Please enter a valid answer (Y/N)')
 
             if continue_edit_text == 'Y':
                 #asks for misspelled word and correct spelling, corrects the file
