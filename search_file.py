@@ -1,6 +1,6 @@
 import string
 from dictionary import Dictionary
-from all_spelling_corrections import AllSpellingCorrections
+import all_spelling_corrections as spellcheck
 
 
 class SearchFile:
@@ -17,27 +17,27 @@ class SearchFile:
     def get_file_information(self):
         no_punct = ''
 
-        with open(self.file, encoding='utf8') as f:
+        with open(self.file_name, encoding='utf8') as f:
             my_file =f.read()
             for word in my_file:
                 if word not in string.punctuation:
                     no_punct += word
-            self.word_lst = no_punct.lower()
-            self.word_lst = self.word.split()
+            self.word_lst = no_punct.split()
 
     def get_misspelled_words(self):
 
         for word in self.word_lst:
             if word not in SearchFile.dictionary_words:
-                self.misspelled_wordlist.append(word)
+                word = word.lower()
+                if word not in SearchFile.dictionary_words:
+                    self.misspelled_wordlist.append(word)
 
         return self.misspelled_wordlist
 
     def get_correct_spellings(self):
 
-        for word in self.misspelled_words:
-            spellcheck = AllSpellingCorrections(word)
-            self.correct_spellings[word] = spellcheck.get_all_possibilities()
+        for word in self.misspelled_wordlist:
+            self.correct_spellings[word] = spellcheck.get_all_possibilities_2(word)
 
         return self.correct_spellings
 
@@ -57,9 +57,10 @@ class SearchFile:
 
         else:
             for word in self.misspelled_wordlist:
-                corrections += f'\nFor {word} in the following textfile {self.file_name}:'
+                corrections += f'\nThe word "{word}" in the following file "{self.file_name}" is spelled incorrectly.\n'
                 corrections += f'\nDid you mean one of the following words:\n'
                 corrections += ', '.join(self.correct_spellings[word])
                 corrections += '\n'
+                corrections += '_'*70
         
         return corrections

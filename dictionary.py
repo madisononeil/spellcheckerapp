@@ -1,6 +1,6 @@
 class Dictionary:
 
-    def __init__(self, file_name) -> None:
+    def __init__(self, file_name):
         self.file_name = file_name
 
     def words_in_dictionary(self):

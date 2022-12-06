@@ -15,6 +15,11 @@ class SingleLetterMistakeofWord(Sp):
                 single_letter_mistake.add(new_word)
 
         for char in self.word:
+            for i in range(97, 123):
+                new_word = self.word.replace(char, chr(i))
+                single_letter_mistake.add(new_word)
+
+        for char in self.word:
             word_new = self.word.replace(char, '')
             single_letter_mistake.add(word_new)
 
