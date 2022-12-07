@@ -37,9 +37,6 @@ while edit_more_files:
         edit_text = True
         while edit_text:
 
-            if continue_edit_text != 'Y' or continue_edit_text != 'N':
-                raise ValueError('Please enter a valid answer (Y/N)')
-
             if continue_edit_text == 'Y':
                 #asks for misspelled word and correct spelling, corrects the file
                 misspelling = input('\nWhich misspelled word would you like to replace?: ')
